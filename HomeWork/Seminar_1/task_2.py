@@ -1,24 +1,26 @@
-# Напишите программу для. проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
-import random
+# Напишите программу для проверки истинности утверждения ¬(X ⋁ Y ⋁ Z) = ¬X ⋀ ¬Y ⋀ ¬Z для всех значений предикат.
 
-print("*" * 20, "Check predicate", "*" * 20)
+# метод выполняет проверку утверждения для всех значений предиката
+# если одно из утверждений будет ложным, то метод вернет False
+# если утверждение истинно для всех значений, то метод вернет True
+def check_precicate(num):
+    while num < 1:
+        print('некорректное значение')
+        num = int(input('введите число еще раз: '))
+    else:
+        for x in range(num):
+            for y in range(num):
+                for z in range(num):
+                    left_side = not (x or y or z)
+                    right_side = not x and not y and not z
+                    if left_side != right_side:
+                        return False
+    return True
 
-def check_predicate():      # метод проверяет истенность утверждения
-    x = []
-    for i in range(3):
-        rnd = random.randint(-1000, 1000)   # рандомное число от -1000 до 1000
-        if rnd >= 0:        # если число больше либо равно 0, добавляем в массив значение True
-            x.append(True)
-        else:               # если число меньше 0, добавляем в массив значение False
-            x.append(False)
-    print(x)                # проверка, что массив заполнен верно
 
-    left = not (x[0] or x[1] or x[2])   # сравниваем все значения левой части
-    right = not x[0] and not x[1] and not x[2]  # сравниваем все значения правой части
-    return left == right        # сравниваем левую часть с правой и выводим результат
+number = int(input('введите число: '))
 
-
-if check_predicate() == True:
-    print("Утверждение истинно")
+if check_precicate(number):
+    print('утверждения истинно для всех значений предиката')
 else:
-    print("Утверждение ложно")
+    print('утверждения ложно для одного из значений предиката')

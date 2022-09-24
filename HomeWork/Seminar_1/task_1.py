@@ -1,25 +1,32 @@
 # Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
 
-import random
+# метод, вычисляет цифру дня недели
+def day_of_week():
+    number = int(input('введите число: '))
 
-print("*" * 20, "Day of week", "*" * 20)
-
-def day_of_week(num): # метод, вычисляет цифру дня недели
-    if num < 8:
-        return num
-    elif num % 7 == 0:
-        return 7
+    # проверка ввода числа меьнше либо равного 0
+    while(number <= 0):
+        print('некорректное значение, повторите ввод числа')
+        number = int(input('введите число: '))
     else:
-        return num % 7
+        if 0 < number < 8:
+            return number
+        elif number % 7 == 0:
+            return 7
+        else:
+            return number % 7
 
-def check_weekend(num): # метод, выводит в консоль результат проверки, является ли день выходным.
+
+# метод, выводит в консоль результат проверки, является ли день выходным.
+def check_weekend(num):
     if 5 < num < 8:
-        print("this day is weekend")
+        print("это выходной")
     else:
-        print("this day is workday")
+        print("это рабочий день")
 
 
-number = random.randint(1, 10)  # просто рандомное число от 1 до 10
-print(number)                   # выводим рандомное число
+dayNumber = day_of_week()
 
-check_weekend(day_of_week(number))
+check_weekend(dayNumber)
+
+

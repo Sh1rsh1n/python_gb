@@ -1,18 +1,16 @@
 # Напишите программу, которая принимает на вход координаты двух точек
 # и находит расстояние между ними в 2D пространстве.
 
-import math
-import random
 
-print('=' * 20, 'GET DISTANCE', '=' * 20)
+# метод вычисляет расстояние между двумя точками по теореме Пифагора
+# просим пользователя ввести координаты точек, получаем и возвращаем результат вычислений
+def get_dist():
+    point_one_x = int(input('enter coordinate X1: '))
+    point_one_y = int(input('enter coordinate Y1: '))
+    point_two_x = int(input('enter coordinate X2: '))
+    point_two_y = int(input('enter coordinate Y2: '))
+    return (((point_one_x - point_two_x) ** 2) + ((point_one_y - point_two_y) ** 2)) ** 0.5
 
-# метод принимает на вход два кортежа, которые содержать рандомные координаты двух точек
-# и вычисляет расстояние между двумя точками по теореме Пифагора
-def get_dist(point1, point2):
-    print(f'Point one: {point1} \nPoint two: {point2}')
-    return math.sqrt(((point1[0] - point2[0]) ** 2) + ((point1[1] - point2[1]) ** 2))
 
-point_one = ((random.randint(-10, 10)), (random.randint(-10, 10)))
-point_two = ((random.randint(-10, 10)), (random.randint(-10, 10)))
-
-print('distance beetwin two points: ', "%.2f" % get_dist(point_one, point_two))
+print('distance beetwin two points: ',
+      "%.2f" % get_dist())  # выводим резльтат вычислений, округяем до 2х цифр после запятой
