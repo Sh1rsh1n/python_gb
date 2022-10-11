@@ -1,8 +1,9 @@
-import itertools
-import re
-from itertools import *
+'''
+2. Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
+Входные и выходные данные хранятся в отдельных текстовых файлах.
+'''
 
-'''модуль сжатия данных, проверяем наличие входящего файла'''
+'''функция сжатия данных'''
 def compress_file(path):
     try:
         with open(path, 'r', encoding='utf-8') as file:
@@ -14,10 +15,10 @@ def compress_file(path):
     i = 0
     while i < len(text):
         count = 1
-        while i + 1 < len(text) and text[i] == text[i + 1]:
+        while i + 1 < len(text) and text[i] == text[i + 1]:     # цикл выполняется пока есть текст и данный символ равен следующему символу
             count += 1
             i += 1
-        encode += str(count) + text[i]
+        encode += str(count) + text[i]      # запись/сжатие данных
         i += 1
 
     with open('compressied_file.txt', 'w', encoding='utf-8') as file:
@@ -25,7 +26,7 @@ def compress_file(path):
 
 
 
-'''модуль распаковки данных'''
+'''функция распаковки данных'''
 def decompress_file(path):
     try:
         with open(path, 'r', encoding='utf-8') as file:
