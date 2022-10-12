@@ -6,6 +6,8 @@ out
 [15, 16, 2, 3, 1, 7, 5, 4, 10]
 [16, 3, 7, 10]
 '''
+import random
+
 
 def compare_current_with_previous_nums(capacity: int):
     ls = [random.randint(-100, 100) for _ in range(capacity)]   # генерируем список случайных чисел
